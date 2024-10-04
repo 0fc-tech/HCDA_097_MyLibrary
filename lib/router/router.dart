@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:my_library/bloc/add_book_cubit.dart';
 import 'package:my_library/bloc/list_books_cubit.dart';
 import 'package:my_library/ui/page/list_books/list_books_page.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +17,11 @@ final router = GoRouter(
           routes: [
             GoRoute(
               path: "add",
-              builder: (context, state) => AddBookPage(),
+              builder: (context, state) =>
+                  BlocProvider(
+                    create: (context) => AddBookCubit(),
+                    child: AddBookPage(),
+                  ),
             )
           ]
       )
